@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login_IC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        @font-face {
+            font-family: 'Mokoto Glitch';
+            src: url("font\\Mokoto Glitch.ttf") format('ttf');
+            /* You should replace 'path/to/' with the actual path to your font files */
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .main-div {
+            position: relative;
+            /* Set position to relative to allow for z-index */
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-div img {
+            position: absolute;
+            /* Position the background image absolutely */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat;
+            object-fit: cover;
+
+            z-index: -1;
+            /* Place the background image behind other elements */
+        }
+
+        .sub-main-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Vertically center content */
+            height: 100%;
+            /* Occupy the full height of .main-div */
+        }
+
+        .first-div {
+            width: 70%;
+            height: 100%;
+
+
+        }
+
+        .second-div {
+            width: 30%;
+            height: 100%;
+            /* background-color: rgb(255, 255, 255); */
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+
+        }
+
+
+
+        .box {
+            border-radius: 10%;
+
+            box-shadow: 0 0 25px var(--color);
+            background-color: antiquewhite;
+            border-color: aliceblue;
+            animation: border-a 1s ease-in-out 0s infinite alternate;
+        }
+
+        @keyframes border-a {
+            0% {
+                box-shadow: 0 0 10px var(--color);
+            }
+
+            100% {
+                box-shadow: 0 0 25px var(--color);
+            }
+        }
+
+        .logo {
+            font-family: 'Mokoto Glitch', sans-serif;
+            font-size: 300%;
+            text-align: center;
+            position: absolute;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: rgb(19, 5, 54);
+            bottom: 5%;
+            text-shadow:
+                -2px -2px 0 #f8e801,
+                2px -2px 0 #f801cf,
+                -2px 2px 0 #f801cf,
+                2px 2px 0 #f801cf;
+            animation: text-b 3s ease-in-out 0s infinite alternate;
+
+        }
+
+        @keyframes text-b {
+            0% {
+                text-shadow:
+                    -2px -2px 0 #f8e801,
+                    2px -2px 0 #f801cf,
+                    -2px 2px 0 #f801cf,
+                    2px 2px 0 #f801cf;
+
+            }
+
+            50% {
+                text-shadow:
+                    -2px -2px 0 #b601f8,
+                    2px -2px 0 #e4f801,
+                    -2px 2px 0 #e4f801,
+                    2px 2px 0 #e4f801;
+            }
+
+            100% {
+                text-shadow:
+                    -2px -2px 0 #f80101,
+                    2px -2px 0 #01f8a6,
+                    -2px 2px 0 #01f8a6,
+                    2px 2px 0 #01f8a6;
+
+            }
+        }
+
+        .logo:hover {
+            cursor: pointer;
+            text-shadow:
+                -2px -2px 0 #f80101,
+                2px -2px 0 #01f8a6,
+                -2px 2px 0 #01f8a6,
+                2px 2px 0 #01f8a6;
+        }
+
+        /* login form starts here */
+
+        #login-form {
+            height: 50%;
+            width: 80%;
+            margin-left: 25px;
+            --color: rgb(194, 241, 7);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 5%;
+            background: linear-gradient(90deg,rgb(213, 212, 212),rgb(53, 242, 185));
+            /* padding-top: 15%; */
+            /* animation: background-login 2s ease-in-out 0s infinite  alternate; */
+
+        }
+
+
+        /* for input */
+        .form-con {
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+        }
+
+        .form-con:focus {
+            color: #212529;
+            background-color: #fff;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
+        }
+
+        #user-svg {
+            margin-right: 20px;
+            margin-top: 3px;
+        }
+
+        #password-svg {
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        #user-svg object {
+            transform: scale(2.25);
+            /* Scale the SVG content by a factor of 2 */
+        }
+
+        #password-svg object {
+            transform: scale(2.25);
+            /* Scale the SVG content by a factor of 2 */
+        }
+
+        .userdiv {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .passworddiv {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #login-text {
+            text-align: center;
+            color: whitesmoke;
+            font-family: 'Mokoto Glitch', sans-serif;
+            color: rgb(35, 18, 18);
+            --color: #f801cf;
+            --color2: #f8e801;
+            --color3: white;
+            --color4: black;
+            text-shadow:
+                0px 0px 3px var(--color2),
+                0px 0px 3px var(--color),
+                0px 0px 3px var(--color3),
+                0px 0px 3px var(--color4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-div">
+        <img src="car3.jpg" alt="">
+        <div class="sub-main-div">
+            <div class="first-div">
+                <h1 class="logo">
+                    IGNITION <BR> CHROME
+                </h1>
+
+            </div>
+            <div class="second-div">
+
+                <!-- login form ,username,passeord and login button -->
+
+                <div class="box" id="login-form">
+                    <h1 id="login-text">LOGIN</h1>
+
+                    <div class="userdiv">
+                        <div id="user-svg">
+                            <object data="user.svg" type="image/svg+xml"></object>
+                        </div>
+                        <input type="text" class="form-con" placeholder="user name" aria-label="username">
+                    </div>
+                    <div class="passworddiv">
+                        <div id="password-svg">
+                            <object data="password.svg" type="image/svg+xml"></object>
+                        </div>
+                        <input type="password" class="form-con" placeholder="password" aria-label="user-login-password">
+                    </div>
+                    <button type="button" style="width: 80px;align-self: flex-end;margin-right: 30px;"
+                        class="btn btn-outline-primary">login</button>
+                    <a href="#" style="align-self: flex-end;margin-right: 30px;">forget password ?</a>
+                    <a href="#" style="align-self: flex-end;margin-right: 30px;">create new account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
